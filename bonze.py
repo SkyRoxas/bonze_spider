@@ -6,12 +6,13 @@ from bs4 import BeautifulSoup
 res = requests.get('http://bonze.tw')
 soup = BeautifulSoup(res.text, "html.parser")
 
-obj =  []
+obj =  {}
+obj['article'] = []
 # json.dumps
 
 for drink in soup.select('.article-field.title'):
-    article = json.dumps({'title': (drink.get_text())},ensure_ascii=False,sort_keys = True ,indent = 4)
-    obj.append(article)
+    addItem = {'title': drink.get_text()}
+    obj['article'].append(addItem)
 
 # print(drink.get_text())
 # print(drink.prettify())
