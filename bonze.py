@@ -11,7 +11,7 @@ obj['article'] = []
 # json.dumps
 
 for drink in soup.select('.article-field.title'):
-    addItem = {'title': drink.get_text()}
+    addItem = {'title': drink.get_text(),'href' : drink.find('a').get('href')}
     obj['article'].append(addItem)
 
 # print(drink.get_text())
